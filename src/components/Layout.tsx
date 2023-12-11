@@ -1,5 +1,5 @@
 import Sidebar from '../components/Sidebar'
-import Test from '../pages/Test'
+import Test from '../pages/CycleTimeCOA'
 
 export default function Layout() {
     return (
