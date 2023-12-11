@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 
@@ -37,13 +36,6 @@ function classNames(...classes: string[]) {
 }
 
 export default function Sidebar() {
-  const [openSection, setOpenSection] = useState<string | null>(null);
-
-  const handleToggleSection = (sectionName: string) => {
-    setOpenSection((prevOpenSection) =>
-      prevOpenSection === sectionName ? null : sectionName
-    );
-  };
 
   return (
     <div className="flex flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 h-screen">
@@ -56,7 +48,7 @@ export default function Sidebar() {
       </div>
       <nav className="flex-1 flex flex-col gap-y-7">
         <ul role="list" className="flex flex-1 flex-col gap-y-7">
-          <li>
+        <li>
             <ul role="list" className="-mx-2 space-y-1">
               {navigation.map((item) => (
                 <li key={item.name}>
@@ -71,43 +63,38 @@ export default function Sidebar() {
                       {item.name}
                     </a>
                   ) : (
-                    <Disclosure>
-                      {() => (
+                    <Disclosure as="div">
+                      {({ open }) => (
                         <>
                           <Disclosure.Button
                             className={classNames(
-                              openSection === item.name
-                                ? 'bg-gray-50'
-                                : 'hover:bg-gray-50',
+                              item.current ? 'bg-gray-50' : 'hover:bg-gray-50',
                               'flex items-center w-full text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-semibold text-gray-700'
                             )}
-                            onClick={() => handleToggleSection(item.name)}
                           >
                             {item.name}
                             <ChevronRightIcon
                               className={classNames(
-                                openSection === item.name
-                                  ? 'rotate-90 text-gray-500'
-                                  : 'text-gray-400',
+                                open ? 'rotate-90 text-gray-500' : 'text-gray-400',
                                 'ml-auto h-5 w-5 shrink-0'
                               )}
                               aria-hidden="true"
                             />
                           </Disclosure.Button>
-                          <Disclosure.Panel className="mt-1 px-2">
+                          <Disclosure.Panel as="ul" className="mt-1 px-2">
                             {item.children.map((subItem) => (
                               <li key={subItem.name}>
-                                <a
+                                {/* 44px */}
+                                <Disclosure.Button
+                                  as="a"
                                   href={subItem.href}
                                   className={classNames(
-                                    subItem.current
-                                      ? 'bg-gray-50'
-                                      : 'hover:bg-gray-50',
+                                    subItem.current ? 'bg-gray-50' : 'hover:bg-gray-50',
                                     'block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700'
                                   )}
                                 >
                                   {subItem.name}
-                                </a>
+                                </Disclosure.Button>
                               </li>
                             ))}
                           </Disclosure.Panel>
