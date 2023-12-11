@@ -56,8 +56,8 @@ export default function Sidebar() {
                     <a
                       href={item.href}
                       className={classNames(
-                        item.current ? 'bg-gray-50' : 'hover:bg-gray-50',
-                        'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-gray-700'
+                        item.current ? 'bg-gray-50' : 'hover:bg-tertiary',
+                        'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-darkFont'
                       )}
                     >
                       {item.name}
@@ -68,8 +68,8 @@ export default function Sidebar() {
                         <>
                           <Disclosure.Button
                             className={classNames(
-                              item.current ? 'bg-gray-50' : 'hover:bg-gray-50',
-                              'flex items-center w-full text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-semibold text-gray-700'
+                              item.current ? 'bg-gray-50' : 'hover:bg-tertiary',
+                              'flex items-center w-full text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-semibold text-darkFont hover:bg-tertiary'
                             )}
                           >
                             {item.name}
@@ -89,8 +89,8 @@ export default function Sidebar() {
                                   as="a"
                                   href={subItem.href}
                                   className={classNames(
-                                    subItem.current ? 'bg-gray-50' : 'hover:bg-gray-50',
-                                    'block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700'
+                                    subItem.current ? 'bg-gray-50' : 'hover:bg-tertiary',
+                                    'block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-darkFont hover:bg-tertiary'
                                   )}
                                 >
                                   {subItem.name}
@@ -109,7 +109,7 @@ export default function Sidebar() {
           <li className="-mx-6 mt-auto">
             <a
               href="#"
-              className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50"
+              className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-darkFont hover:bg-gray-50"
             >
               <img
                 className="h-8 w-8 rounded-full bg-gray-50"
