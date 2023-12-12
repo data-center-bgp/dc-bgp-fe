@@ -1,285 +1,4 @@
-const mockData = [
-    {
-        startDate: 'January 1th 2023',
-        year: 2023,
-        month: 'January',
-        trip: 11304123,
-        fleet: 'Kapal Api',
-        tugboat_spob: 'Tugboat',
-        ob_spob: 'OB',
-        route: 'Balikpapan - Samarinda',
-        estimateFuel: '440',
-        actualFuel: '442',
-        arrivedInLoadingDock: 'January 1st 2023 01.30',
-        orderAssistTugboatEntry: 'January 1st 2023 01.31',
-        startAnchorUp: 'January 1st 2023 01.31',
-        finishAnchorUp: 'January 1st 2023 01.31',
-        assistConnectEntry: 'January 1st 2023 01.31',
-        docking: 'January 1st 2023 01.31',
-        loadingMasterOnboard: 'January 1st 2023 01.31',
-        startLoading: 'January 1st 2023 01.31',
-        finishLoading: 'January 1st 2023 01.31',
-        startSounding: 'January 1st 2023 01.31',
-        finishSounding: 'January 1st 2023 01.31',
-        orderAssistTugboatExit: 'January 1st 2023 01.31',
-        assistConnectExit: 'January 1st 2023 01.31',
-        castOff: 'January 1st 2023 01.31',
-        fullAway_STS: 'January 1st 2023 01.31',
-        arrivedAt_STS: 'January 1st 2023 01.31',
-        orderAssistTugboatEntry_STS: 'January 1st 2023 01.31',
-        assistConnectEntry_STS: 'January 1st 2023 01.31',
-        docking_STS: 'January 1st 2023 01.31',
-        loadingMasterOnboard_STS: 'January 1st 2023 01.31',
-        startLoading_STS: 'January 1st 2023 01.31',
-        finishLoading_STS: 'January 1st 2023 01.31',
-        startSounding_STS: 'January 1st 2023 01.31',
-        finishSounding_STS: 'January 1st 2023 01.31',
-        orderAssistTugboatExit_STS: 'January 1st 2023 01.31',
-        assistConnectExit_STS: 'January 1st 2023 01.31',
-        castOff_STS: 'January 1st 2023 01.31',
-        fullAway_discharge: 'January 1st 2023 01.31',
-        arrivedAt_discharge: 'January 1st 2023 01.31',
-        orderAssistTugboatEntry_discharge: 'January 1st 2023 01.31',
-        startAnchorUp_discharge: 'January 1st 2023 01.31',
-        finishAnchorUp_discharge: 'January 1st 2023 01.31',
-        assistConnectEntry_discharge: 'January 1st 2023 01.31',
-        docking_discharge: 'January 1st 2023 01.31',
-        loadingMasterOnboard_discharge: 'January 1st 2023 01.31',
-        startDischarge_discharge: 'January 1st 2023 01.31',
-        finishDischarge_discharge: 'January 1st 2023 01.31',
-        documentCargoOnboard_discharge: 'January 1st 2023 01.31',
-        orderAssistTugboatExit_discharge: 'January 1st 2023 01.31',
-        assistConnectExit_discharge: 'January 1st 2023 01.31',
-        castOff_discharge: 'January 1st 2023 01.31',
-        arrivedInPulauAtas: 'January 1st 2023 01.31',
-        fullAwayAfterDischarge: 'January 1st 2023 01.31',
-        arrivedInLoadingDock_2: 'January 1st 2023 01.31',
-    },
-    {
-        startDate: 'January 1th 2023',
-        year: 2023,
-        month: 'January',
-        trip: 11304123,
-        fleet: 'Kapal Api',
-        tugboat_spob: 'Tugboat',
-        ob_spob: 'OB',
-        route: 'Balikpapan - Samarinda',
-        estimateFuel: '440',
-        actualFuel: '442',
-        arrivedInLoadingDock: 'January 1st 2023 01.30',
-        orderAssistTugboatEntry: 'January 1st 2023 01.31',
-        startAnchorUp: 'January 1st 2023 01.31',
-        finishAnchorUp: 'January 1st 2023 01.31',
-        assistConnectEntry: 'January 1st 2023 01.31',
-        docking: 'January 1st 2023 01.31',
-        loadingMasterOnboard: 'January 1st 2023 01.31',
-        startLoading: 'January 1st 2023 01.31',
-        finishLoading: 'January 1st 2023 01.31',
-        startSounding: 'January 1st 2023 01.31',
-        finishSounding: 'January 1st 2023 01.31',
-        orderAssistTugboatExit: 'January 1st 2023 01.31',
-        assistConnectExit: 'January 1st 2023 01.31',
-        castOff: 'January 1st 2023 01.31',
-        fullAway_STS: 'January 1st 2023 01.31',
-        arrivedAt_STS: 'January 1st 2023 01.31',
-        orderAssistTugboatEntry_STS: 'January 1st 2023 01.31',
-        assistConnectEntry_STS: 'January 1st 2023 01.31',
-        docking_STS: 'January 1st 2023 01.31',
-        loadingMasterOnboard_STS: 'January 1st 2023 01.31',
-        startLoading_STS: 'January 1st 2023 01.31',
-        finishLoading_STS: 'January 1st 2023 01.31',
-        startSounding_STS: 'January 1st 2023 01.31',
-        finishSounding_STS: 'January 1st 2023 01.31',
-        orderAssistTugboatExit_STS: 'January 1st 2023 01.31',
-        assistConnectExit_STS: 'January 1st 2023 01.31',
-        castOff_STS: 'January 1st 2023 01.31',
-        fullAway_discharge: 'January 1st 2023 01.31',
-        arrivedAt_discharge: 'January 1st 2023 01.31',
-        orderAssistTugboatEntry_discharge: 'January 1st 2023 01.31',
-        startAnchorUp_discharge: 'January 1st 2023 01.31',
-        finishAnchorUp_discharge: 'January 1st 2023 01.31',
-        assistConnectEntry_discharge: 'January 1st 2023 01.31',
-        docking_discharge: 'January 1st 2023 01.31',
-        loadingMasterOnboard_discharge: 'January 1st 2023 01.31',
-        startDischarge_discharge: 'January 1st 2023 01.31',
-        finishDischarge_discharge: 'January 1st 2023 01.31',
-        documentCargoOnboard_discharge: 'January 1st 2023 01.31',
-        orderAssistTugboatExit_discharge: 'January 1st 2023 01.31',
-        assistConnectExit_discharge: 'January 1st 2023 01.31',
-        castOff_discharge: 'January 1st 2023 01.31',
-        arrivedInPulauAtas: 'January 1st 2023 01.31',
-        fullAwayAfterDischarge: 'January 1st 2023 01.31',
-        arrivedInLoadingDock_2: 'January 1st 2023 01.31',
-    },
-    {
-        startDate: 'January 1th 2023',
-        year: 2023,
-        month: 'January',
-        trip: 11304123,
-        fleet: 'Kapal Api',
-        tugboat_spob: 'Tugboat',
-        ob_spob: 'OB',
-        route: 'Balikpapan - Samarinda',
-        estimateFuel: '440',
-        actualFuel: '442',
-        arrivedInLoadingDock: 'January 1st 2023 01.30',
-        orderAssistTugboatEntry: 'January 1st 2023 01.31',
-        startAnchorUp: 'January 1st 2023 01.31',
-        finishAnchorUp: 'January 1st 2023 01.31',
-        assistConnectEntry: 'January 1st 2023 01.31',
-        docking: 'January 1st 2023 01.31',
-        loadingMasterOnboard: 'January 1st 2023 01.31',
-        startLoading: 'January 1st 2023 01.31',
-        finishLoading: 'January 1st 2023 01.31',
-        startSounding: 'January 1st 2023 01.31',
-        finishSounding: 'January 1st 2023 01.31',
-        orderAssistTugboatExit: 'January 1st 2023 01.31',
-        assistConnectExit: 'January 1st 2023 01.31',
-        castOff: 'January 1st 2023 01.31',
-        fullAway_STS: 'January 1st 2023 01.31',
-        arrivedAt_STS: 'January 1st 2023 01.31',
-        orderAssistTugboatEntry_STS: 'January 1st 2023 01.31',
-        assistConnectEntry_STS: 'January 1st 2023 01.31',
-        docking_STS: 'January 1st 2023 01.31',
-        loadingMasterOnboard_STS: 'January 1st 2023 01.31',
-        startLoading_STS: 'January 1st 2023 01.31',
-        finishLoading_STS: 'January 1st 2023 01.31',
-        startSounding_STS: 'January 1st 2023 01.31',
-        finishSounding_STS: 'January 1st 2023 01.31',
-        orderAssistTugboatExit_STS: 'January 1st 2023 01.31',
-        assistConnectExit_STS: 'January 1st 2023 01.31',
-        castOff_STS: 'January 1st 2023 01.31',
-        fullAway_discharge: 'January 1st 2023 01.31',
-        arrivedAt_discharge: 'January 1st 2023 01.31',
-        orderAssistTugboatEntry_discharge: 'January 1st 2023 01.31',
-        startAnchorUp_discharge: 'January 1st 2023 01.31',
-        finishAnchorUp_discharge: 'January 1st 2023 01.31',
-        assistConnectEntry_discharge: 'January 1st 2023 01.31',
-        docking_discharge: 'January 1st 2023 01.31',
-        loadingMasterOnboard_discharge: 'January 1st 2023 01.31',
-        startDischarge_discharge: 'January 1st 2023 01.31',
-        finishDischarge_discharge: 'January 1st 2023 01.31',
-        documentCargoOnboard_discharge: 'January 1st 2023 01.31',
-        orderAssistTugboatExit_discharge: 'January 1st 2023 01.31',
-        assistConnectExit_discharge: 'January 1st 2023 01.31',
-        castOff_discharge: 'January 1st 2023 01.31',
-        arrivedInPulauAtas: 'January 1st 2023 01.31',
-        fullAwayAfterDischarge: 'January 1st 2023 01.31',
-        arrivedInLoadingDock_2: 'January 1st 2023 01.31',
-    },
-    {
-        startDate: 'January 1th 2023',
-        year: 2023,
-        month: 'January',
-        trip: 11304123,
-        fleet: 'Kapal Api',
-        tugboat_spob: 'Tugboat',
-        ob_spob: 'OB',
-        route: 'Balikpapan - Samarinda',
-        estimateFuel: '440',
-        actualFuel: '442',
-        arrivedInLoadingDock: 'January 1st 2023 01.30',
-        orderAssistTugboatEntry: 'January 1st 2023 01.31',
-        startAnchorUp: 'January 1st 2023 01.31',
-        finishAnchorUp: 'January 1st 2023 01.31',
-        assistConnectEntry: 'January 1st 2023 01.31',
-        docking: 'January 1st 2023 01.31',
-        loadingMasterOnboard: 'January 1st 2023 01.31',
-        startLoading: 'January 1st 2023 01.31',
-        finishLoading: 'January 1st 2023 01.31',
-        startSounding: 'January 1st 2023 01.31',
-        finishSounding: 'January 1st 2023 01.31',
-        orderAssistTugboatExit: 'January 1st 2023 01.31',
-        assistConnectExit: 'January 1st 2023 01.31',
-        castOff: 'January 1st 2023 01.31',
-        fullAway_STS: 'January 1st 2023 01.31',
-        arrivedAt_STS: 'January 1st 2023 01.31',
-        orderAssistTugboatEntry_STS: 'January 1st 2023 01.31',
-        assistConnectEntry_STS: 'January 1st 2023 01.31',
-        docking_STS: 'January 1st 2023 01.31',
-        loadingMasterOnboard_STS: 'January 1st 2023 01.31',
-        startLoading_STS: 'January 1st 2023 01.31',
-        finishLoading_STS: 'January 1st 2023 01.31',
-        startSounding_STS: 'January 1st 2023 01.31',
-        finishSounding_STS: 'January 1st 2023 01.31',
-        orderAssistTugboatExit_STS: 'January 1st 2023 01.31',
-        assistConnectExit_STS: 'January 1st 2023 01.31',
-        castOff_STS: 'January 1st 2023 01.31',
-        fullAway_discharge: 'January 1st 2023 01.31',
-        arrivedAt_discharge: 'January 1st 2023 01.31',
-        orderAssistTugboatEntry_discharge: 'January 1st 2023 01.31',
-        startAnchorUp_discharge: 'January 1st 2023 01.31',
-        finishAnchorUp_discharge: 'January 1st 2023 01.31',
-        assistConnectEntry_discharge: 'January 1st 2023 01.31',
-        docking_discharge: 'January 1st 2023 01.31',
-        loadingMasterOnboard_discharge: 'January 1st 2023 01.31',
-        startDischarge_discharge: 'January 1st 2023 01.31',
-        finishDischarge_discharge: 'January 1st 2023 01.31',
-        documentCargoOnboard_discharge: 'January 1st 2023 01.31',
-        orderAssistTugboatExit_discharge: 'January 1st 2023 01.31',
-        assistConnectExit_discharge: 'January 1st 2023 01.31',
-        castOff_discharge: 'January 1st 2023 01.31',
-        arrivedInPulauAtas: 'January 1st 2023 01.31',
-        fullAwayAfterDischarge: 'January 1st 2023 01.31',
-        arrivedInLoadingDock_2: 'January 1st 2023 01.31',
-    },
-    {
-        startDate: 'January 1th 2023',
-        year: 2023,
-        month: 'January',
-        trip: 11304123,
-        fleet: 'Kapal Api',
-        tugboat_spob: 'Tugboat',
-        ob_spob: 'OB',
-        route: 'Balikpapan - Samarinda',
-        estimateFuel: '440',
-        actualFuel: '442',
-        arrivedInLoadingDock: 'January 1st 2023 01.30',
-        orderAssistTugboatEntry: 'January 1st 2023 01.31',
-        startAnchorUp: 'January 1st 2023 01.31',
-        finishAnchorUp: 'January 1st 2023 01.31',
-        assistConnectEntry: 'January 1st 2023 01.31',
-        docking: 'January 1st 2023 01.31',
-        loadingMasterOnboard: 'January 1st 2023 01.31',
-        startLoading: 'January 1st 2023 01.31',
-        finishLoading: 'January 1st 2023 01.31',
-        startSounding: 'January 1st 2023 01.31',
-        finishSounding: 'January 1st 2023 01.31',
-        orderAssistTugboatExit: 'January 1st 2023 01.31',
-        assistConnectExit: 'January 1st 2023 01.31',
-        castOff: 'January 1st 2023 01.31',
-        fullAway_STS: 'January 1st 2023 01.31',
-        arrivedAt_STS: 'January 1st 2023 01.31',
-        orderAssistTugboatEntry_STS: 'January 1st 2023 01.31',
-        assistConnectEntry_STS: 'January 1st 2023 01.31',
-        docking_STS: 'January 1st 2023 01.31',
-        loadingMasterOnboard_STS: 'January 1st 2023 01.31',
-        startLoading_STS: 'January 1st 2023 01.31',
-        finishLoading_STS: 'January 1st 2023 01.31',
-        startSounding_STS: 'January 1st 2023 01.31',
-        finishSounding_STS: 'January 1st 2023 01.31',
-        orderAssistTugboatExit_STS: 'January 1st 2023 01.31',
-        assistConnectExit_STS: 'January 1st 2023 01.31',
-        castOff_STS: 'January 1st 2023 01.31',
-        fullAway_discharge: 'January 1st 2023 01.31',
-        arrivedAt_discharge: 'January 1st 2023 01.31',
-        orderAssistTugboatEntry_discharge: 'January 1st 2023 01.31',
-        startAnchorUp_discharge: 'January 1st 2023 01.31',
-        finishAnchorUp_discharge: 'January 1st 2023 01.31',
-        assistConnectEntry_discharge: 'January 1st 2023 01.31',
-        docking_discharge: 'January 1st 2023 01.31',
-        loadingMasterOnboard_discharge: 'January 1st 2023 01.31',
-        startDischarge_discharge: 'January 1st 2023 01.31',
-        finishDischarge_discharge: 'January 1st 2023 01.31',
-        documentCargoOnboard_discharge: 'January 1st 2023 01.31',
-        orderAssistTugboatExit_discharge: 'January 1st 2023 01.31',
-        assistConnectExit_discharge: 'January 1st 2023 01.31',
-        castOff_discharge: 'January 1st 2023 01.31',
-        arrivedInPulauAtas: 'January 1st 2023 01.31',
-        fullAwayAfterDischarge: 'January 1st 2023 01.31',
-        arrivedInLoadingDock_2: 'January 1st 2023 01.31',
-    }
-]
+import { mockData } from "../components/mockData"
 
 export default function CycleTimeCOA() {
     return (
@@ -299,7 +18,10 @@ export default function CycleTimeCOA() {
                         <table className="min-w-full divide-y divide-gray-300">
                             <thead>
                                 <tr>
-                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-lightFont sm:pl-0">
+                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-lightFont">
+                                        ID Data
+                                    </th>
+                                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-lightFont">
                                         Tanggal Mulai
                                     </th>
                                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-lightFont">
@@ -463,6 +185,67 @@ export default function CycleTimeCOA() {
                                     </th>
                                 </tr>
                             </thead>
+                            <tbody className="divide-y divide-gray-200">
+                                {mockData.map((mockData) => (
+                                    <tr key={mockData.id}>
+                                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-lightFont sm:pl-0">{mockData.id}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.startDate}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.year}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.month}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.trip}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.fleet}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.tugboat_spob}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.ob_spob}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.route}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.estimateFuel}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.actualFuel}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.arrivedInLoadingDock}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.orderAssistTugboatEntry}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.startAnchorUp}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.finishAnchorUp}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.assistConnectEntry}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.docking}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.loadingMasterOnboard}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.startLoading}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.finishLoading}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.startSounding}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.finishSounding}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.orderAssistTugboatExit}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.assistConnectExit}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.castOff}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.fullAway_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.arrivedAt_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.orderAssistTugboatEntry_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.assistConnectEntry_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.docking_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.loadingMasterOnboard_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.startLoading_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.finishLoading_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.startSounding_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.finishSounding_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.orderAssistTugboatExit_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.assistConnectExit_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.castOff_STS}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.fullAway_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.arrivedAt_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.orderAssistTugboatEntry_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.startAnchorUp_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.finishAnchorUp_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.assistConnectEntry_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.docking_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.loadingMasterOnboard_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.startDischarge_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.finishDischarge_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.documentCargoOnboard_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.orderAssistTugboatExit_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.assistConnectExit_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.castOff_discharge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.arrivedInPulauAtas}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.fullAwayAfterDischarge}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-lightFont">{mockData.arrivedInLoadingDock_2}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
                         </table>
                     </div>
                 </div>
