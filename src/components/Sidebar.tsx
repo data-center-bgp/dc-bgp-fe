@@ -1,10 +1,14 @@
 import { Disclosure } from '@headlessui/react';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import { Link } from 'react-router-dom';
+
+interface SidebarProps {
+  onNavigate: (pageName: string) => void;
+}
 
 const navigation = [
   {
     name: 'Shipping',
-    href: '#',
     current: true,
     children: [
       { name: 'Cycle Time COA', href: '#', current: true },
@@ -35,7 +39,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Sidebar() {
+export default function Sidebar({ onNavigate }: SidebarProps) {
 
   return (
     <div className="flex flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 h-screen">
@@ -84,17 +88,16 @@ export default function Sidebar() {
                           <Disclosure.Panel as="ul" className="mt-1 px-2">
                             {item.children.map((subItem) => (
                               <li key={subItem.name}>
-                                {/* 44px */}
-                                <Disclosure.Button
-                                  as="a"
-                                  href={subItem.href}
+                                <Link
+                                  to={subItem.name}
+                                  onClick={() => onNavigate(subItem.name)}
                                   className={classNames(
                                     subItem.current ? 'bg-gray-50' : 'hover:bg-tertiary',
                                     'block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-darkFont hover:bg-tertiary'
                                   )}
                                 >
                                   {subItem.name}
-                                </Disclosure.Button>
+                                </Link>
                               </li>
                             ))}
                           </Disclosure.Panel>
