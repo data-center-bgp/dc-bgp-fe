@@ -14,23 +14,47 @@ const AddDataCOAModal: React.FC<AddDataCOAModalProps> = ({ onClose }) => {
     tugboat_spob: "",
     ob_spob: "",
     route: "",
+    estimateFuel: "",
+    actualFuel: "",
+    arrivedInLoadingDock: "",
+    orderAssistTugboatEntry: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    const offset = new Date().getTimezoneOffset();
+    const adjustedValue = new Date(
+      new Date(value).getTime() - offset * 60 * 1000
+    )
+      .toISOString()
+      .slice(0, 16);
+
+    setFormData((prevData) => {
+      const updatedData = { ...prevData, [name]: adjustedValue };
+      console.log("arrivedInLoadingDock:", updatedData.arrivedInLoadingDock);
+      return updatedData;
+    });
+  };
+
+  const handleFocus = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    if (e.target.value === "") {
+      e.target.value = "";
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle the form submission, you can send formData to your API or handle it as needed
     console.log("Form Data Submitted:", formData);
-    onClose(); // Close the modal after submission
+    onClose();
   };
 
   return (
     <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
-      <div className="bg-white bg-opacity-90 p-8 rounded-md text-darkFont max-w-md">
+      <div className="bg-white bg-opacity-90 p-8 rounded-md text-darkFont max-w-md overflow-y-auto max-h-full">
         <h1 className="text-2xl font-semibold mb-4">
           This is Modal Page for Adding Data in Cycle Time COA!
         </h1>
@@ -97,7 +121,7 @@ const AddDataCOAModal: React.FC<AddDataCOAModalProps> = ({ onClose }) => {
           </div>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
-              Tugboat/SPOT
+              Tugboat/SPOB
             </label>
             <select
               name="tugboat_spob"
@@ -134,6 +158,43 @@ const AddDataCOAModal: React.FC<AddDataCOAModalProps> = ({ onClose }) => {
               name="route"
               value={formData.route}
               onChange={handleChange}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Estimate Fuel
+            </label>
+            <input
+              type="text"
+              name="estimateFuel"
+              value={formData.estimateFuel}
+              onChange={handleChange}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Actual Fuel
+            </label>
+            <input
+              type="text"
+              name="actualFuel"
+              value={formData.actualFuel}
+              onChange={handleChange}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Tiba di Pelabuhan Loading
+            </label>
+            <input
+              type="datetime-local"
+              name="arrivedInLoadingDock"
+              value={formData.arrivedInLoadingDock}
+              onChange={handleChange}
+              onFocus={handleFocus}
               className="mt-1 p-2 border rounded-md w-full"
             />
           </div>
