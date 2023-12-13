@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { mockData } from "../components/mockData";
-import { useNavigate } from "react-router-dom";
+import AddDataCOAModal from "../components/AddCOA";
 
 export default function CycleTimeCOA() {
-  const navigate = useNavigate();
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  const handleAddData = () => {
-    navigate("/cycle-time-coa/add");
+  const openModal = () => {
+    setModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setModalOpen(false)
   }
 
   return (
@@ -21,12 +26,13 @@ export default function CycleTimeCOA() {
         </div>
         <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
           <button
-            onClick={handleAddData}
+            onClick={openModal}
             type="button"
             className="block rounded-md bg-tertiary px-3 py-2 text-center text-sm font-semibold text-lightFont shadow-sm hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-300"
           >
             Add Data
           </button>
+          {isModalOpen ? <AddDataCOAModal onClose={closeModal} /> : ''}
         </div>
       </div>
       <div className="mt-8 flow-root">
