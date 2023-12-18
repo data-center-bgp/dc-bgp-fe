@@ -11,7 +11,9 @@ export default {
         lightFont: '#E6E6E6',
         darkFont: '#1A1A1A',
         secondary: '#19376D',
-        tertiary: '#A5D7E8'
+        tertiary: '#A5D7E8',
+        secondaryRed: '#6D1919',
+        tertiaryRed: '#A33131'
       }
     },
   },
