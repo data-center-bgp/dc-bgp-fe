@@ -799,19 +799,21 @@ const AddDataCOAModal: React.FC<AddDataCOAModalProps> = ({ onClose }) => {
               className="mt-1 p-2 border rounded-md w-full"
             />
           </div>
-          <button
-            type="submit"
-            className="bg-secondary text-white px-4 py-2 rounded-md cursor-pointer hover:bg-tertiary"
-          >
-            Add Data
-          </button>
-          <button
-            type="button"
-            onClick={onClose}
-            className="ml-2 text-gray-600 cursor-pointer"
-          >
-            Cancel
-          </button>
+          <div className="flex justify-between">
+            <button
+              type="submit"
+              className="bg-secondary text-white px-4 py-2 rounded-md cursor-pointer hover:bg-tertiary"
+            >
+              Add Data
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              className="ml-2 cursor-pointer bg-secondaryRed px-3 py-2 rounded-md hover:bg-tertiaryRed text-lightFont"
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </div>
