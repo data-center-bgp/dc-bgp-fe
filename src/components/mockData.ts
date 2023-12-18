@@ -55,6 +55,12 @@ export const mockData = [
         arrivedInPulauAtas: 'January 1st 2023 01.31',
         fullAwayAfterDischarge: 'January 1st 2023 01.31',
         arrivedInLoadingDock_2: 'January 1st 2023 01.31',
+        remarks: {
+            id: 1,
+            route: 'Balikpapan - Samarinda',
+            type: 'Internal',
+            notes: 'Perjalanannya enak bro'
+        }
     },
     {
         id: 2,
@@ -112,6 +118,12 @@ export const mockData = [
         arrivedInPulauAtas: 'January 1st 2023 01.31',
         fullAwayAfterDischarge: 'January 1st 2023 01.31',
         arrivedInLoadingDock_2: 'January 1st 2023 01.31',
+        remarks: {
+            id: 2,
+            route: 'Balikpapan - Samarinda',
+            type: 'External',
+            notes: 'Perjalanan aman, tidak ada kendala'
+        }
     },
     {
         id: 3,
@@ -169,6 +181,12 @@ export const mockData = [
         arrivedInPulauAtas: 'January 1st 2023 01.31',
         fullAwayAfterDischarge: 'January 1st 2023 01.31',
         arrivedInLoadingDock_2: 'January 1st 2023 01.31',
+        remarks: {
+            id: 3,
+            route: 'Balikpapan - Samarinda',
+            type: 'External',
+            notes: 'Ada kendala dalam pengantaran minyak'
+        }
     },
     {
         id: 4,
@@ -226,6 +244,12 @@ export const mockData = [
         arrivedInPulauAtas: 'January 1st 2023 01.31',
         fullAwayAfterDischarge: 'January 1st 2023 01.31',
         arrivedInLoadingDock_2: 'January 1st 2023 01.31',
+        remarks: {
+            id: 4,
+            route: 'Balikpapan - Samarinda',
+            type: 'Internal',
+            notes: 'Ada tumpah minyak 30 liter'
+        }
     },
     {
         id: 5,
