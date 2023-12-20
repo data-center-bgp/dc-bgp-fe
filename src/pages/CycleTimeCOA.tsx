@@ -1,17 +1,30 @@
 import { useState } from "react";
 import { mockData } from "../components/mockData";
 import AddDataCOAModal from "../components/AddCOA";
+import RemarksCOAModal from "../components/RemarksCOA";
 
 export default function CycleTimeCOA() {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isAddDataModalOpen, setAddDataModalOpen] = useState(false);
+  const [isRemarksModalOpen, setRemarksModalOpen] = useState(false);
+  const [selectedDataIndex, setSelectedDataIndex] = useState<number | null>(
+    null
+  );
 
-  const openModal = () => {
-    setModalOpen(true);
+  const openAddDataModal = () => {
+    setAddDataModalOpen(true);
+  };
+
+  const openRemarksModal = (index: number) => {
+    setRemarksModalOpen(true);
+    setSelectedDataIndex(index);
   };
 
   const closeModal = () => {
-    setModalOpen(false);
+    setAddDataModalOpen(false);
+    setRemarksModalOpen(false);
   };
+
+  console.log("Selected Data Index:", selectedDataIndex);
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
@@ -23,13 +36,13 @@ export default function CycleTimeCOA() {
         </div>
         <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
           <button
-            onClick={openModal}
+            onClick={openAddDataModal}
             type="button"
             className="inline-flex items-center rounded-md bg-secondary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Add Data
           </button>
-          {isModalOpen ? <AddDataCOAModal onClose={closeModal} /> : ""}
+          {isAddDataModalOpen ? <AddDataCOAModal onClose={closeModal} /> : ""}
         </div>
       </div>
       <div className="mt-8 flow-root">
@@ -42,6 +55,12 @@ export default function CycleTimeCOA() {
                     scope="col"
                     className="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-lightFont"
                   ></th>
+                  <th
+                    scope="col"
+                    className="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-lightFont"
+                  >
+                    Remarks
+                  </th>
                   <th
                     scope="col"
                     className="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-lightFont"
@@ -375,17 +394,32 @@ export default function CycleTimeCOA() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {mockData.map((mockData) => (
+                {mockData.map((mockData, index) => (
                   <tr key={mockData.id}>
                     <td className="relative py-4 pl-3 text-right text-sm font-medium">
-                      <a
-                        className="inline-block px-4 py-2 text-center bg-secondary text-lightFont rounded-md hover:bg-secondary-dark focus:outline-none focus:shadow-outline-indigo active:bg-secondary-darker"
-                        href="#"
+                      <button
+                        className="inline-block px-4 py-2 text-center bg-secondary hover:bg-indigo-500 text-lightFont rounded-md hover:bg-secondary-dark focus:outline-none focus:shadow-outline-indigo active:bg-secondary-darker"
                       >
                         Edit
-                      </a>
+                      </button>
                     </td>
-
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-lightFont sm:pl-0 text-center">
+                      <button
+                        onClick={() => openRemarksModal(index)}
+                        type="button"
+                        className="inline-flex items-center rounded-md bg-secondary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      >
+                        See Remarks
+                      </button>
+                      {isRemarksModalOpen &&
+                      selectedDataIndex !== null &&
+                      selectedDataIndex === index ? (
+                        <RemarksCOAModal
+                          remarks={mockData.remarks}
+                          onClose={closeModal}
+                        />
+                      ) : null}
+                    </td>
                     <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-lightFont sm:pl-0 text-center">
                       {mockData.id}
                     </td>

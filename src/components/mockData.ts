@@ -1,4 +1,68 @@
-export const mockData = [
+export interface MockData {
+    id: number;
+    startDate: string;
+    year: number;
+    month: string;
+    trip: number;
+    fleet: string;
+    tugboat_spob: string;
+    ob_spob: string;
+    route: string;
+    estimateFuel: string;
+    actualFuel: string;
+    arrivedInLoadingDock: string;
+    orderAssistTugboatEntry: string;
+    startAnchorUp: string;
+    finishAnchorUp: string;
+    assistConnectEntry: string;
+    docking: string;
+    loadingMasterOnboard: string;
+    startLoading: string;
+    finishLoading: string;
+    startSounding: string;
+    finishSounding: string;
+    orderAssistTugboatExit: string;
+    assistConnectExit: string;
+    castOff: string;
+    fullAway_STS: string;
+    arrivedAt_STS: string;
+    orderAssistTugboatEntry_STS: string;
+    assistConnectEntry_STS: string;
+    docking_STS: string;
+    loadingMasterOnboard_STS: string;
+    startLoading_STS: string;
+    finishLoading_STS: string;
+    startSounding_STS: string;
+    finishSounding_STS: string;
+    orderAssistTugboatExit_STS: string;
+    assistConnectExit_STS: string;
+    castOff_STS: string;
+    fullAway_discharge: string;
+    arrivedAt_discharge: string;
+    orderAssistTugboatEntry_discharge: string;
+    startAnchorUp_discharge: string;
+    finishAnchorUp_discharge: string;
+    assistConnectEntry_discharge: string;
+    docking_discharge: string;
+    loadingMasterOnboard_discharge: string;
+    startDischarge_discharge: string;
+    finishDischarge_discharge: string;
+    documentCargoOnboard_discharge: string;
+    orderAssistTugboatExit_discharge: string;
+    assistConnectExit_discharge: string;
+    castOff_discharge: string;
+    arrivedInPulauAtas: string;
+    fullAwayAfterDischarge: string;
+    arrivedInLoadingDock_2: string;
+    remarks: {
+      id: number;
+      route: string;
+      type: string;
+      notes: string;
+    };
+  }
+
+export const mockData: MockData[] = [
     {
         id: 1,
         startDate: 'January 1th 2023',
@@ -55,6 +119,12 @@ export const mockData = [
         arrivedInPulauAtas: 'January 1st 2023 01.31',
         fullAwayAfterDischarge: 'January 1st 2023 01.31',
         arrivedInLoadingDock_2: 'January 1st 2023 01.31',
+        remarks: {
+            id: 1,
+            route: 'Balikpapan - Samarinda',
+            type: 'Internal',
+            notes: 'Perjalanannya enak bro',
+        }
     },
     {
         id: 2,
@@ -112,6 +182,12 @@ export const mockData = [
         arrivedInPulauAtas: 'January 1st 2023 01.31',
         fullAwayAfterDischarge: 'January 1st 2023 01.31',
         arrivedInLoadingDock_2: 'January 1st 2023 01.31',
+        remarks: {
+            id: 2,
+            route: 'Balikpapan - Samarinda',
+            type: 'External',
+            notes: 'Perjalanan aman, tidak ada kendala'
+        }
     },
     {
         id: 3,
@@ -169,6 +245,12 @@ export const mockData = [
         arrivedInPulauAtas: 'January 1st 2023 01.31',
         fullAwayAfterDischarge: 'January 1st 2023 01.31',
         arrivedInLoadingDock_2: 'January 1st 2023 01.31',
+        remarks: {
+            id: 3,
+            route: 'Balikpapan - Samarinda',
+            type: 'External',
+            notes: 'Ada kendala dalam pengantaran minyak'
+        }
     },
     {
         id: 4,
@@ -226,6 +308,12 @@ export const mockData = [
         arrivedInPulauAtas: 'January 1st 2023 01.31',
         fullAwayAfterDischarge: 'January 1st 2023 01.31',
         arrivedInLoadingDock_2: 'January 1st 2023 01.31',
+        remarks: {
+            id: 4,
+            route: 'Balikpapan - Samarinda',
+            type: 'Internal',
+            notes: 'Ada tumpah minyak 30 liter'
+        }
     },
     {
         id: 5,
@@ -283,6 +371,12 @@ export const mockData = [
         arrivedInPulauAtas: 'January 1st 2023 01.31',
         fullAwayAfterDischarge: 'January 1st 2023 01.31',
         arrivedInLoadingDock_2: 'January 1st 2023 01.31',
+        remarks: {
+            id: 5,
+            route: 'Balikpapan - Samarinda',
+            type: 'Internal',
+            notes: 'Test 1',
+        }
     },
     {
         id: 6,
@@ -340,5 +434,11 @@ export const mockData = [
         arrivedInPulauAtas: 'January 1st 2023 01.31',
         fullAwayAfterDischarge: 'January 1st 2023 01.31',
         arrivedInLoadingDock_2: 'January 1st 2023 01.31',
+        remarks: {
+            id: 6,
+            route: 'Balikpapan - Samarinda',
+            type: 'Internal',
+            notes: 'Perjalanannya enak bro',
+        }
     }
 ]
