@@ -29,12 +29,12 @@ const RemarksCOAModal: React.FC<RemarksCOAProps> = ({ remarks, onClose }) => {
           aria-labelledby="modal-headline"
         >
           <div className="bg-gray-50 px-4 py-5 sm:p-6">
-            <h2 className="text-lg font-semibold leading-6 text-gray-900" id="modal-headline">
+            <h2 className="text-lg font-semibold leading-6 text-darkFont" id="modal-headline">
               Remarks
             </h2>
-            <p className="mt-1">Route: {remarks.route}</p>
-            <p className="mt-1">Type: {remarks.type}</p>
-            <p className="mt-1">Notes: {remarks.notes}</p>
+            <p className="mt-1 text-darkFont">Route: {remarks.route}</p>
+            <p className="mt-1 text-darkFont">Type: {remarks.type}</p>
+            <p className="mt-1 text-darkFont">Notes: {remarks.notes}</p>
           </div>
           <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
             <button

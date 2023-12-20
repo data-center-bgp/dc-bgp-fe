@@ -59,6 +59,12 @@ export default function CycleTimeCOA() {
                     scope="col"
                     className="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-lightFont"
                   >
+                    Remarks
+                  </th>
+                  <th
+                    scope="col"
+                    className="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-lightFont"
+                  >
                     ID Data
                   </th>
                   <th
@@ -391,12 +397,13 @@ export default function CycleTimeCOA() {
                 {mockData.map((mockData, index) => (
                   <tr key={mockData.id}>
                     <td className="relative py-4 pl-3 text-right text-sm font-medium">
-                      <a
-                        className="inline-block px-4 py-2 text-center bg-secondary text-lightFont rounded-md hover:bg-secondary-dark focus:outline-none focus:shadow-outline-indigo active:bg-secondary-darker"
-                        href="#"
+                      <button
+                        className="inline-block px-4 py-2 text-center bg-secondary hover:bg-indigo-500 text-lightFont rounded-md hover:bg-secondary-dark focus:outline-none focus:shadow-outline-indigo active:bg-secondary-darker"
                       >
                         Edit
-                      </a>
+                      </button>
+                    </td>
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-lightFont sm:pl-0 text-center">
                       <button
                         onClick={() => openRemarksModal(index)}
                         type="button"
